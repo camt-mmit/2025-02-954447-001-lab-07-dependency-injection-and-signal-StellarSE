@@ -1,0 +1,23 @@
+<header>
+  <button type="button" (click)="addTel()">+ Tel</button>
+
+  <label>
+    <b>Contact {{ number() }}</b>
+    <input type="text" [value]="contact().name" />
+    <span>({{ contact().tels.length }})</span>
+  </label>
+
+  <button type="button" [disabled]="!removable()" (click)="remove.emit()">X</button>
+</header>
+
+<ul>
+  @for (tel of contact().tels; track tel) {
+    <li>
+      <label>
+        <b>Tell {{ $index + 1 }}</b>
+        <input type="tel" [value]="tel.value" (change)="changeTel($index, $event.target.value)" />
+      </label>
+      <button type="button" [disabled]="$count === 1" (click)="removeTel($index)">X</button>
+    </li>
+  }
+</ul>
