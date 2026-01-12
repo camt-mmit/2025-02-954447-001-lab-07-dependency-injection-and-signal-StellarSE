@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLinkActive, RouterLinkWithHref, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-example-root',
-  imports: [RouterLinkActive, RouterLinkWithHref, RouterOutlet],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './example-root.html',
   styleUrl: './example-root.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

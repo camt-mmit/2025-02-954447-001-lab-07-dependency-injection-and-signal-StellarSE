@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, model } from '@angular/core';
 import { DynamicTel } from '../dynamic-tel/dynamic-tel';
 import { createContact } from '../../helpers';
 import { ContactModel } from '../../types';
-
 @Component({
   selector: 'app-dynamic-contact',
   imports: [DynamicTel],
@@ -11,30 +10,29 @@ import { ContactModel } from '../../types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicContact {
-  readonly contacts = model([createContact()]);
+  readonly contacts = model<readonly ContactModel[]>([createContact()]);
 
-  protected addContact(): void {
+   protected addContact(): void{
     this.contacts.update((contacts) => {
       return [...contacts, createContact()];
     });
   }
 
-  protected removeContact(index: number): void {
+  protected removeContact(index:number): void{
     this.contacts.update((contacts) => {
-      return contacts.filter((_, i) => i !== index);
+      return contacts.filter((__value, i) => i !== index);
     });
   }
-
-  protected changeContact(index: number, value: ContactModel): void {
+  protected changeContact(index:number, value: ContactModel): void{
     this.contacts.update((contacts) => {
       return contacts.map((contact, i) => {
-        if (i === index) {
+        if (i === index){
           contact.name = value.name;
           contact.tels = value.tels;
         }
-
         return contact;
       });
-    });
-  }
+  });
 }
+}
+

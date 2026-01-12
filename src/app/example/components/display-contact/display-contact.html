@@ -1,1 +1,18 @@
-<p>display-contact works!</p>
+<header>
+  <div>
+    <span>
+      <h2>Contacts</h2>
+    </span>
+
+      <span>({{ contacts().length | number }})</span>
+
+  </div>
+</header>
+
+<ul>
+  @for (contact of contacts(); track contact) {
+    <li>
+      <app-display-tel [contact]="contact" [number]="$index + 1" />
+    </li>
+  }
+</ul>
