@@ -1,10 +1,9 @@
-import { DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, numberAttribute } from '@angular/core';
 import { Contact } from '../../types';
 
 @Component({
   selector: 'app-display-tel',
-  imports: [DecimalPipe],
+  imports: [],
   templateUrl: './display-tel.html',
   styleUrl: './display-tel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
